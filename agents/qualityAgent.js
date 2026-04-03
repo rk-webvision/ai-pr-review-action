@@ -14,7 +14,6 @@ async function qualityAgent(diff) {
       },
     ],
   });
-  console.log("test");
   console.log("Agent");
 
   return res.choices[0].message.content;
