@@ -1,0 +1,26 @@
+{
+  "name": "ai-pr-review-action",
+  "version": "1.0.0",
+  "description": "AI PR Reviewer GitHub Action",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rk-webvision/ai-pr-review-action.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rk-webvision/ai-pr-review-action/issues"
+  },
+  "homepage": "https://github.com/rk-webvision/ai-pr-review-action#readme",
+  "dependencies": {
+    "@actions/core": "^3.0.0",
+    "@actions/github": "^9.0.0",
+    "openai": "^6.33.0"
+  }
+}

@@ -1,0 +1,11 @@
+name: "AI PR Review"
+description: "Multi-agent AI code review"
+
+inputs:
+  openai_api_key:
+    description: "OpenAI API Key"
+    required: true
+
+runs:
+  using: "node20"
+  main: "index.js"
