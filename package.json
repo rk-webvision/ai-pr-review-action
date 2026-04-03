@@ -18,8 +18,8 @@
   },
   "homepage": "https://github.com/rk-webvision/ai-pr-review-action#readme",
   "dependencies": {
-    "@actions/core": "^3.0.0",
-    "@actions/github": "^9.0.0",
-    "openai": "^6.33.0"
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.0",
+    "openai": "^4.0.0"
   }
 }
