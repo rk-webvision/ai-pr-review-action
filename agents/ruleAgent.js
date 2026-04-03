@@ -8,7 +8,7 @@ function ruleAgent(diff) {
   if (diff.includes("any")) {
     issues.push("Avoid using 'any'");
   }
-
+  console.log("Issues: ", issues);
   return issues;
 }
 
