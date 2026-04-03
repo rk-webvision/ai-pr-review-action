@@ -14,7 +14,7 @@ async function securityAgent(diff) {
       },
     ],
   });
-
+  console.log("Security");
   return res.choices[0].message.content;
 }
 
