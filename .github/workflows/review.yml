@@ -2,7 +2,7 @@ name: AI Review
 
 on:
   pull_request:
-    types: [opened, synchronize]
+    types: [opened, synchronize, reopened]
 
 permissions:
   contents: read
@@ -13,12 +13,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      # ✅ Step 1: Checkout full repo history (IMPORTANT)
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-      - run: git fetch origin master
-      - run: git diff origin/master...HEAD > diff.txt
+      # ✅ Step 2: Generate safe diff (NO merge base issue)
+      - name: Generate diff
+        run: |
+          echo "Generating diff..."
+          
+          if [ -n "${{ github.event.pull_request.base.ref }}" ]; then
+            git fetch origin ${{ github.event.pull_request.base.ref }}
+            git diff origin/${{ github.event.pull_request.base.ref }}...HEAD > diff.txt || echo "" > diff.txt
+          else
+            git diff HEAD^ HEAD > diff.txt || echo "" > diff.txt
+          fi
 
-      - name: Run AI Review
-        uses: rk-webvision/ai-pr-review-action@v1
+          echo "Diff preview:"
+          head -n 50 diff.txt
+
+      # ✅ Step 3: Run your reusable AI action
+      - name: Run AI Review Agent
+        uses: rk-webvision/ai-pr-review-action@v1   # 👈 your repo
         with:
           openai_api_key: ${{ secrets.OPENAI_API_KEY }}
